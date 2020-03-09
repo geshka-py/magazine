@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}home - magazine{% endblock title %}
+
+{% block content %}
+    {% load static %}
+
+	<!-- Home -->
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+	<br><br><br><br>
+
+	<!-- Products -->
+
+	<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<div class="product_grid">
+						{% for x in goods %}
+
+							<!-- Product -->
+							<div class="product">
+								<div class="product_image"><img src="/media/{{ x.photo }}" height="200" width="200" alt=""></div>
+								<div class="product_content">
+									<div class="product_title"><a href="/product/{{ x.id }}">{{ x.name }}</a></div>
+									<div class="product_content">{{ x.category.name }}</div>
+									<div class="product_price">{{ x.price }} ₴</div>
+								</div>
+							</div>
+						{% endfor %}
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Icon Boxes -->
+
+	<div class="icon_boxes">
+		<div class="container">
+			<div class="row icon_box_row">
+
+				<!-- Icon Box -->
+				<div class="col-lg-4 icon_box_col">
+					<div class="icon_box">
+						<div class="icon_box_image"><img src="{% static 'images/icon_1.svg' %}" alt=""></div>
+						<div class="icon_box_title">Free Shipping Worldwide</div>
+						<div class="icon_box_text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Icon Box -->
+				<div class="col-lg-4 icon_box_col">
+					<div class="icon_box">
+						<div class="icon_box_image"><img src="{% static 'images/icon_2.svg' %}" alt=""></div>
+						<div class="icon_box_title">Free Returns</div>
+						<div class="icon_box_text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Icon Box -->
+				<div class="col-lg-4 icon_box_col">
+					<div class="icon_box">
+						<div class="icon_box_image"><img src="{% static 'images/icon_3.svg' %}" alt=""></div>
+						<div class="icon_box_title">24h Fast Support</div>
+						<div class="icon_box_text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+        <style>
+          #slider1 {
+            background-image: url('../../static/images/home_slider_1.jpg');
+          }
+          #slider2 {
+            background-image: url('../../static/images/home_slider_1.jpg');
+          }
+          #slider3 {
+            background-image: url('../../static/images/home_slider_1.jpg');
+          }
+          #ad1 {
+            background-image: url('../../static/images/avds_small.jpg');
+          }
+          #ad2 {
+            background-image: url('../../static/images/avds_large.jpg');
+          }
+          #ad3 {
+            background-image: url('../../static/images/avds_xl.jpg');
+          }
+        </style>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Подтверждение заказа{% endblock title %}
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+    <div id="confirm" class="container">
+        <h3>Подтверждение заказа</h3>
+        <h4 id="warn">Вы собираетесеь подтвердить заказ на приобретение товара</h4>
+        <ul id="params">
+            <li>Наименование: <span>{{ order.product.name }}</span></li>
+            <li>Категория: <span>{{ order.product.category.name }}</span></li>
+            <li>Производитель: <span>{{ order.product.producer.name }}</span></li>
+            <li>Цена: <span>{{ order.product.price }} uah</span></li>
+            <li>Количество: <span>{{ order.count }}</span></li>
+            <li>Общая стоимость: <span style="color: red">{{ am }}</span></li>
+        </ul>
+        <br>
+        <form action="/cart/confirm/{{ order.id }}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-light" value="Подтвердите заказ">
+        </form>
+    </div>
+{% endblock %}

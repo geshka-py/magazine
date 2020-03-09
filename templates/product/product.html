@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}catalog - magazine{% endblock title %}
+
+{% block content %}
+    {% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/product.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+<br><br><br><br>
+	<!-- Product Details -->
+
+	<div class="product_details">
+		<div class="container">
+			<div class="row details_row">
+
+				<!-- Product Image -->
+				<div class="col-lg-6">
+					<div class="details_image">
+						<div class="details_image_large"><img src="/media/{{ product.photo }}" alt=""><div class="product_extra product_new"><a href="categories.html">New</a></div></div>
+
+					</div>
+				</div>
+
+				<!-- Product Content -->
+				<div class="col-lg-6">
+					<div class="details_content">
+						<div class="details_name">{{ product.name }}</div>
+						<div class="details_price">{{ product.price }} ₴</div>
+
+						<!-- In Stock -->
+						<div class="in_stock_container">
+							<div class="availability">Availability:</div>
+							<span>In Stock</span>
+						</div>
+
+						<!-- Product Quantity -->
+						<div class="product_quantity_container">
+							<div class="product_quantity clearfix">
+								<span  >Qty</span>
+								<input id="quantity_input" type="text" pattern="[1-9]*" value="1">
+								<div class="quantity_buttons">
+									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+								</div>
+							</div>
+							<div id="add-to-cart-btn" class="button cart_button"><a>Add to cart</a></div>
+							<input id="123" type="hidden" value="{{ product.id }}">
+							{% if user.is_superuser %}
+								<a href="/product/edit/{{ product.id }}">Change price, admin!</a>
+							{% endif %}
+						</div>
+
+
+			<div class="row description_row">
+			<div class="row description_row">
+				<div class="col">
+					<div class="description_title_container">
+						<div class="description_title">Description</div>
+					</div>
+					<div class="description_text">
+						<p>{{ product.description }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="{% static 'js/product.js' %}"></script>
+
+
+{% endblock content %}

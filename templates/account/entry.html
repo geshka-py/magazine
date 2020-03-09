@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} Вход {% endblock title %}
+{% block caption %} Страница Входа {% endblock caption %}
+
+{% block content %}
+    {% load static %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    <div class="container" style="text-align: center; margin-top: 90px; margin-bottom: 90px">
+        <!-- Форма авторизации -->
+        <div class="container" style="text-align: center; margin-top: 90px; margin-bottom: 90px">
+            <h3>Авторизация</h3>
+            <form id="form2" method="post" action="/account/entry" onsubmit="return true">
+                {% csrf_token %}
+                <div class="from-group">
+                    Логин: <br>
+                    <input type="text" id="login" name="login" required>
+                    <img id="login_ico" src="{% static 'images/question.png.png' %}" class="icon">
+                    <div id="login_err" class="err"></div>
+                </div>
+                <div class="from-group">
+                    Пароль: <br>
+                    <input type="password" id="pass1" name="pass1" required>
+                    <img id="pass1_ico" src="{% static 'images/question.png.png' %}" class="icon">
+                    <div id="pass1_err" class="err"></div>
+                </div>
+                <p style="margin-top: 30px">
+                    <input id="submit" type="submit" value="Отправить" class="btn btn-light" style="width: 47%">
+                    <input id="reset" type="reset" value="Очистить" class="btn btn-light" style="width: 47%">
+                </p>
+            </form>
+        </div>
+    </div>
+    <!-- Таблица стилей для формы авторизации: -->
+    <style>
+        #form2 {
+            width: 500px;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin: 25px auto;
+            padding: 30px 40px;
+            text-align: left;
+        }
+        input {
+            width: 87%;
+        }
+        .b1 {
+            width: 47%;
+        }
+        .err {
+            color: red;
+        }
+        .icon {
+            width: 24px;
+        }
+    </style>
+{% endblock content %}

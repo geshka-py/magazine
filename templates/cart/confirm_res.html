@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Отчет о подтверждении заказа{% endblock title %}
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+    <div id="confirm" class="container">
+        <h3>Отчет о подтверждении заказа</h3>
+        <h4 id="warn">{{ mess }}</h4>
+        <br>
+    </div>
+{% endblock %}

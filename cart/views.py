@@ -29,9 +29,9 @@ def delete(request, oid: int):
 def total(request, oid: int):
     data = dict()
     orders = Order.objects.get(id=oid)
-    total = 0
+    total_ = 0
     for order in orders:
-        total += order.count * order.product.price
+        total_ += order.count * order.product.price
     return render(request, 'cart/index.html', context=data)
 
 

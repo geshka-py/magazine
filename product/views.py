@@ -22,7 +22,7 @@ def ajax_product(request):
 
     Order.objects.create(count=_count, product_id=pid, user_id=uid)
     response['mess'] = f'Заказ успешно сохранен для {request.user.username}'
-    return render(request, 'product/')
+    return render(request, 'product/product.html')
 
 
 def upload_basket(request):
@@ -43,15 +43,15 @@ def upload_basket(request):
 def edit(request, oid: int):
     data = dict()
     order = Product.objects.get(id=oid)
-    data['form'] = Form1(instance=product)
+    data['form'] = Form1(instance=order)
     if request.method == 'POST':
         data['price'] = order.product.price
-        return render(request, 'product/product.html', context=data)
+        return render(request, f'/admin/catalog/product/{oid}/change/', context=data)
     elif request.method == 'GET':
         product_form = Form1(request.POST)
         if product_form.is_valid():
             product.price = product_form.cleaned_data['price']
             order.save()
 
-        return redirect('/product/product')
+        return redirect(f'/admin/catalog/product/{oid}/change/')
 

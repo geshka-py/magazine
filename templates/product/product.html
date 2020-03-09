@@ -18,7 +18,7 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img src="/media/{{ product.photo }}" alt=""><div class="product_extra product_new"><a href="categories.html">New</a></div></div>
+						<div class="details_image_large"><img src="/media/{{ product.photo }}" alt=""><div class="product_extra product_new"><a href="">New</a></div></div>
 
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 							<div id="add-to-cart-btn" class="button cart_button"><a>Add to cart</a></div>
 							<input id="123" type="hidden" value="{{ product.id }}">
 							{% if user.is_superuser %}
-								<a href="/product/edit/{{ product.id }}">Change price, admin!</a>
+								<a href="/product/edit/{{ product.id }}">Edit</a>
 							{% endif %}
 						</div>
 
